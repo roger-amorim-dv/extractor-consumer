@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -20,7 +21,7 @@ public class ApplicationController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<ApplicationDTO> createCustomer(final @RequestBody ApplicationDTO applicationDTO) {
+    public ResponseEntity<ApplicationDTO> createApplication(final @RequestBody @Valid ApplicationDTO applicationDTO) {
         try {
             return new ResponseEntity<>(applicationService.createApplication(applicationDTO), HttpStatus.CREATED);
         } catch (final Throwable ex) {
